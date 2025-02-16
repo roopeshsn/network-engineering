@@ -31,3 +31,10 @@ Packet-9: B sent a packet by incrementing its ACK number. SEQ-22, ACK-1038
 Packet-10: B sent a packet with a segment length of 696 bytes. SEQ-22, ACK-1038
 
 Packet-11: A sent a packet segment size of 48 bytes. Also, it acknowledged the previous packet sent by B. SEQ-1038, ACK-718
+
+## How Retransmission works in TCP?
+
+In order to retransmit the packet, the receiver should communicate this information to the sender. That's why we have the ACK mechanism in TCP. Say the sender sends three packets with a segment length of 100 bytes each. When the receiver got the first packet, it sent out an acknowledgment by incrementing the ACK to 101. Say the second packet is not reached to the receiver. Then A won't receive an acknowledgment. It waits for a certain time and then retransmits that packet again. Say this time too the receiver didn't get the packet and remains quiet. Now the sender again sends that packet after a certain interval. This continues until the receiver sends out an acknowledgment packet. The sender won't send the third packet until the receiver acknowledges the second packet.
+
+There is a concept of Duplicate ACK, which is appropriate to discuss it when we talk about Window Size.
+
